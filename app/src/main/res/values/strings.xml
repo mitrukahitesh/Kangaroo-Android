@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Kangaroo</string>
+    <string name="id">---</string>
+    <string name="ipFormat">192.168.2.</string>
+    <string name="port">Port</string>
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="error">Some error occurred</string>
+    <string name="noConnection">Wifi Not Connected</string>
+    <string name="connected">Connected</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="timeout">Connection Timeout</string>
+    <string name="connecting">Connecting to Server...</string>
+</resources>
