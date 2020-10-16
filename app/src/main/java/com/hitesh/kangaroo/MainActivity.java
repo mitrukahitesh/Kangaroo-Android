@@ -209,6 +209,8 @@ public class MainActivity extends AppCompatActivity {
                 disconnector.start();
                 disconnector.join();
                 connected = false;
+                writer.close();
+                reader.close();
                 socket.close();
                 runOnUiThread(new Runnable() {
                     @Override
