@@ -181,20 +181,25 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 
-    private void sendMessage(String message) {
-        try {
-            StringBuilder len = new StringBuilder(Integer.toString(message.getBytes().length));
-            Integer len_of_len = len.length();
-            for (int i = 0; i < HEADER - len_of_len; ++i) {
-                len.insert(0, ' ');
+    private void sendMessage(final String message) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    StringBuilder len = new StringBuilder(Integer.toString(message.getBytes().length));
+                    Integer len_of_len = len.length();
+                    for (int i = 0; i < HEADER - len_of_len; ++i) {
+                        len.insert(0, ' ');
+                    }
+                    writer.write(len.toString().getBytes());
+                    writer.flush();
+                    writer.write(message.getBytes());
+                    writer.flush();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-            writer.write(len.toString().getBytes());
-            writer.flush();
-            writer.write(message.getBytes());
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        }).start();
     }
 
     private void disconnect() {
